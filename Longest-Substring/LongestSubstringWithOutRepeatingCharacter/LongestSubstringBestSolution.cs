@@ -15,7 +15,7 @@ namespace DataStructure
 
             int[] index = new int[128]; // set of ASCII characters int[26] is for letters 'a' to 'z' or 'A' to 'Z'
 
-            for (int i = 0, j = 0;  i < s.Length - 1; i++)
+            for (int i = 0, j = 0;  i < s.Length; i++)
             {
                 char c = s[i];
                 j = Math.Max(index[c], j);
