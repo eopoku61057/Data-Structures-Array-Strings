@@ -14,7 +14,6 @@ namespace DataStructure
         {
             HashSet<int> set = new HashSet<int>();
             List<List<int>> data = new List<List<int>>();
-            int a = 0;
 
             for (int i = 0; i < nums.Length; i++)
             {
