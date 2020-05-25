@@ -9,6 +9,8 @@ namespace DataStructure
     {
        public void SelectionSort(int[] arr)
         {
+            // Time Complexity: O(n^2) as there are two nested loops.
+            // Auxilliary Space: O(1) it never makes more than O(n) swaps and can useful when memory write is a costly operation
             int minIndex = 0;
             int temp = 0;
             int len = arr.Length;
