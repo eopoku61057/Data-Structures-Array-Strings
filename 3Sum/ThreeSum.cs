@@ -10,10 +10,10 @@ namespace DataStructure
 {
     public class SortedZeros
     {
-        public List<List<int>> ThreeSum(int[] nums)
+        public IList<IList<int>> ThreeSum(int[] nums)
         {
             HashSet<int> set = new HashSet<int>();
-            List<List<int>> data = new List<List<int>>();
+            IList<IList<int>> data = new List<IList<int>>();
 
             for (int i = 0; i < nums.Length; i++)
             {
