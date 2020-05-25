@@ -7,6 +7,9 @@ namespace DataStructure
 {
     public class SortingAlgorithm
     {
+        // Best Case Time complexity is Big 0(nlogn) same as worst and average cases
+        // Average is same 0(nlogn)
+        // Auxilliary Space is 0(n)
        public void Sort(int[] arr, int l, int r)
         {
             if (l < r)
