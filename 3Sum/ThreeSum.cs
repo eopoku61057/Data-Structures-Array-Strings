@@ -12,22 +12,42 @@ namespace DataStructure
     {
         public IList<IList<int>> ThreeSum(int[] nums)
         {
-            HashSet<int> set = new HashSet<int>();
+            Array.Sort(nums);
             IList<IList<int>> data = new List<IList<int>>();
 
             for (int i = 0; i < nums.Length; i++)
             {
-                for (int j = i + 1; j < nums.Length - 1; j++)
+                if (i == 0 || nums[i - 1] != nums[i])
                 {
-                    if ((nums[i] + nums[j] + nums[j + 1]) == 0)
-                    {
-                        List<int> retData = AddToList(nums[i], nums[j], nums[j + 1]);
-                        data.Add(retData);
-                    }
+                    twoSum(nums, i, data);
                 }
             }
 
             return data;
+        }
+
+        private void twoSum(int[] nums, int i, IList<IList<int>> data)
+        {
+            int low = i + 1, high = nums.Length - 1;
+            while (low < high)
+            {
+                int sum = nums[i] + nums[low] + nums[high];
+                if (sum < 0 || (low > i + 1 && nums[low] == nums[low - 1]))
+                {
+                    ++low;
+                }
+                else if (sum > 0 || (high < nums.Length - 1 && nums[high] == nums[high + 1]))
+                {
+                    --high;
+                }
+                else
+                {
+                    List<int> retData = AddToList(nums[i], nums[low++], nums[high--]);
+                    data.Add(retData);
+                }
+
+
+            }
         }
 
         private List<int> AddToList(int v1, int v2, int v3)
@@ -42,3 +62,4 @@ namespace DataStructure
         }
     }
 }
+
