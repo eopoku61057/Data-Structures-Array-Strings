@@ -6,7 +6,9 @@ using System.Text;
 namespace DataStructure
 {
     public class SortingAlgorithm
-    {
+    {   // Time taken by Quick sort depends upon the input array and partition strategy
+        // Time complexity is = bg 0(nlogn)
+        // Worst Case time complexity is 0(n^2) it's quicker in practice than Merge sort despite the worst case
         /* The main function that implements QuickSort() 
             arr[] --> Array to be sorted, 
             low --> Starting index, 
