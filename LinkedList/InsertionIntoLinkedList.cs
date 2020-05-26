@@ -8,18 +8,30 @@ namespace DataStructure
 {
     public class LinkedListMethods
     {
-        // Time complexity of push() is O(1) as it does constant amount of work.
-        /* Inserts a new Node at front of the list. */
-        public void push(SingleLinkedList singlyList, int new_data)
+        public Node head; // head of list
+
+        public class Node
         {
+            public int data;
+            public Node next;
+
+            // constructor
+            public Node(int d)
+            { data = d; next = null; }
+        }
+        
+        public void push(int new_data)
+        {
+            // Time complexity of push() is O(1) as it does constant amount of work.
+            /* Inserts a new Node at front of the list. */
             // allocate the node and put in data
             Node new_node = new Node(new_data);
 
             // make next of new node as head
-            new_node.next = singlyList.head;
+            new_node.next = head;
 
             // make the head point to new Node
-            singlyList.head = new_node;
+            head = new_node;
         }
 
         public void InsertAfter(Node prev_node, int new_data)
@@ -43,7 +55,7 @@ namespace DataStructure
             prev_node.next = new_Node;
         }
 
-        public void Append(SingleLinkedList data, int new_data)
+        public void Append(int new_data)
         {
             /* Time complexity of append is O(n) where n is the number of nodes in linked list. 
              * Since there is a loop from head to end, the function does O(n) work.
@@ -54,9 +66,9 @@ namespace DataStructure
             Node new_Node = new Node(new_data);
 
             // if linked list is empty, then make the new node as head
-            if(data.head == null)
+            if(head == null)
             {
-                data.head = new Node(new_data);
+                head = new Node(new_data);
                 return;
             }
 
@@ -64,7 +76,7 @@ namespace DataStructure
             new_Node.next = null;
 
             /* Else traverse till the last node */
-            Node last = data.head;
+            Node last = head;
             while(last.next != null)
             {
                 last = last.next;
@@ -72,6 +84,16 @@ namespace DataStructure
 
             last.next = new_Node;
             return;
+        }
+
+        public void PrintList()
+        {
+            Node tnode = head;
+            while (tnode != null)
+            {
+                Console.Write(tnode.data + " ");
+                tnode = tnode.next;
+            }
         }
     }
 }
