@@ -96,4 +96,31 @@ namespace DataStructure
             }
         }
     }
+
+    public class Program 
+    {
+        static void Main(string[] args)
+        {
+            LinkedListMethods Linkedlist = new LinkedListMethods();
+
+            // Insert 6. so LinkedList becomes 6->null
+            Linkedlist.Append(6);
+
+            // Insert 7 at the beginning. so linked list becomes 7->6->null
+            Linkedlist.push(7);
+
+            // Insert 1 at the beginning. So list becomes 1->7->6->null
+            Linkedlist.push(1);
+
+            // Insert 4 at the end. so List becomes 1->7->6->4->null
+            Linkedlist.Append(4);
+
+            // Insert 8 after 7. So list becomes 1->7->8->6->4->null
+            Linkedlist.InsertAfter(Linkedlist.head.next, 8);
+
+            Console.Write("Created Linked list is: ");
+            Linkedlist.PrintList();
+        }
+
+    }
 }
