@@ -1,5 +1,11 @@
   public void reorderList(ListNode head) {
       // Time Complexity: 0(N) Space complexity: 0(1)
+
+      /*
+       Middle of the Linked List.
+        Reverse Linked List.
+        Merge Two Sorted Lists.
+       */
     if (head == null) return;
 
     // find the middle of linked list [Problem 876]
