@@ -12,6 +12,11 @@ namespace Sorting_Algorithm
             LongestSubArray(nums);
 
         }
+        /* Find the largest SubArray formed by consective Intergers
+            eg { 2, 0, 2, 1, 4, 3, 1, 0}
+
+            ans: {0, 2, 1, 4, 3}  length: 5, start: index[1] to index[5]
+        */
 
         public static void LongestSubArray(int[] nums)
         {
