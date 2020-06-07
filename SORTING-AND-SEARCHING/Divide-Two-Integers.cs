@@ -16,6 +16,8 @@ namespace DataStructure
 {
     public class SortedZeros
     {
+        // Time complexity: 0(log N)
+        // Space complexity: 0(1)
         private static int HALF_INT_MIN = -1073741824;
         public int Divide(int dividend, int divisor)
         {
