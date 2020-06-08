@@ -39,7 +39,9 @@ namespace DataStructure
                 }
             }
             
-            return nums1;
+            int[] dd = new int[nums1.Length];
+            Array.Copy(nums1, 0, dd, 0, k);
+            return dd;
         }
     }
 }
