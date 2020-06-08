@@ -38,16 +38,15 @@ namespace DataStructure
 
         private int[] set_intersection(HashSet<int> set1, HashSet<int> set2)
         {
-            int[] output = new int[set1.Count()];
-            int idx = 0;
+            List<int> output = new List<int>();
             foreach( int s in set1)
             {
                 if(set2.Contains(s))
                 {
-                    output[idx++] = s;
+                    output.Add(s);
                 }
             }
-            return output;
+            return output.ToArray();
         }
     }
 }
