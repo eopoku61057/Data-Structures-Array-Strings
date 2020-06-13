@@ -1,57 +1,47 @@
-/*
-    A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
-    Find all strobogrammatic numbers that are of length = n.
-    Input:  n = 2
-    Output: ["11","69","88","96"]
- */
-
- using System;
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
-namespace DataStructure
+namespace Sorting_Algorithm
 {
-    public class SortedZeros
+    class Program
     {
-        private char[,] mapping = new char[,]
+        static void Main(string[] args)
         {
-            {'0', '0' },
-            {'1', '1' },
-            {'6', '9' },
-            {'8', '8' },
-            {'9', '6' }
-        };
-        public IList<string> FindStrobogrammatic(int n)
+            int n = 4;
+            IList<string> x = FindStrobogrammatic(n);
+            foreach( var r in x)
+            {
+                Console.WriteLine(r);
+            }
+            
+        }
+        public static IList<string> FindStrobogrammatic(int n)
         {
-            List<string> res = new List<string>();
-            if (n < 1) return res;
-            char[] chs = new char[n];
-            Helper(chs, 0, n - 1, res);
-            return res;
+            return DFS(n, n);
         }
 
-        private void Helper(char[] chs, int lo, int hi, List<string> res)
+        private static IList<string> DFS(int m, int n)
         {
-            if (lo > hi)
+            IList<string> output = new List<string>();
+            if (m == 0) return new List<string>() { "" };
+            if (m == 1) return new List<string>() { "0", "1", "8" };
+            if (m == 2) return new List<string>() { "11", "69", "88", "96"};
+
+            IList<string> tmp = DFS(m - 2, n);
+            foreach (var x in tmp)
             {
-                if(chs.Length == 1 || chs[0] != '0')
+                if (m != n)
                 {
-                    res.Add(chs.ToString());
+                    output.Add("0" + x + "0");
+                    return output;
                 }
-
-                return;
+                output.Add("1" + x + "1");
+                output.Add("8" + x + "8");
+                output.Add("6" + x + "9");
+                output.Add("9" + x + "6");
             }
-
-            foreach (char map in mapping)
-            {
-                if (lo == hi && map != map) continue;
-                chs[lo] = map;
-                chs[hi] = map;
-                Helper(chs, lo + 1, hi - 1, res);
-            }
+            return output;
         }
     }
-
 }
