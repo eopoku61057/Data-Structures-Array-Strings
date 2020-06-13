@@ -1,39 +1,51 @@
-/*
-    Given a set of distinct integers, nums, return all possible subsets (the power set).
-    Note: The solution set must not contain duplicate subsets.
-
- */
-
- using System;
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
-namespace DataStructure
+namespace Sorting_Algorithm
 {
-    public class SortedZeros
+    class Program
     {
-        public IList<IList<int>> Subsets(int[] nums)
+        static void Main(string[] args)
+        {
+            int[] n = new int[] { 1, 2, 3};
+            IList<IList<int>> x = Subsets(n);
+            foreach( var r in x)
+            {
+                foreach (var xx in r)
+                {
+                    Console.WriteLine(xx);
+                }
+            }
+            
+        }
+        public static IList<IList<int>> Subsets(int[] nums)
         {
             IList<IList<int>> output = new List<IList<int>>();
             int n = nums.Length;
 
-            for (int i = (int)Math.Pow(2, n); i < (int)Math.Pow(2, n + 1); i++)
+            for (int i = 0; i < n + 1; i++)
             {
-                // generate bitmask, from 0..0 to 1...11
-                string bitmask = Convert.ToString(i).Substring(1);
-
-                // append subset corresponding to that bitmask
-                List<int> curr = new List<int>();
-                for (int j = 0; j < n; j++)
-                {
-                    if (bitmask[j] == '1') curr.Add(nums[j]);
-                }
-                output.Add(curr);
+                BackTracking(nums, output, new List<int>(), 0, i);
             }
+            
             return output;
         }
-    }
 
+        private static void BackTracking(int[] nums, IList<IList<int>> output, List<int> list, int lo, int hi)
+        {
+            if (list.Count == hi)
+            {
+                output.Add(new List<int>(list));
+                return;
+            }
+
+            for(int i = lo; i < nums.Length; i++)
+            {
+                list.Add(nums[i]);
+                BackTracking(nums, output, list, i + 1, hi);
+                list.RemoveAt(list.Count - 1);
+            }
+        }
+    }
 }
