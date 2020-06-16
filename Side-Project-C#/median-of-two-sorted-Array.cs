@@ -23,10 +23,10 @@ namespace Sorting_Algorithm
                 int partitionB = (lengthA + lengthB + 1) / 2 - partitionA;
 
                 int maxLeftA = partitionA == 0 ? int.MinValue : nums1[partitionA - 1];
-                int minRightA = partitionA == 0 ? int.MaxValue : nums1[partitionA];
+                int minRightA = partitionA == lengthA ? int.MaxValue : nums1[partitionA];
 
                 int maxLeftB = partitionB == 0 ? int.MinValue : nums2[partitionB - 1];
-                int minRightB = partitionB == 0 ? int.MaxValue : nums2[partitionB];
+                int minRightB = partitionB == lengthB ? int.MaxValue : nums2[partitionB];
 
                 if (maxLeftA <= maxLeftB && minRightA <= minRightB)
                 {
