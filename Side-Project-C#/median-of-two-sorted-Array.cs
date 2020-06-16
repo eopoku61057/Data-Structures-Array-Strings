@@ -31,7 +31,7 @@ namespace Sorting_Algorithm
                 if (maxLeftA <= maxLeftB && minRightA <= minRightB)
                 {
                     // if it's even
-                    if ((lengthA + lengthB) / 2 == 0)
+                    if ((lengthA + lengthB) % 2 == 0)
                     {
                         return ((double)Math.Max(maxLeftA, maxLeftB) + Math.Max(minRightA, minRightB)) / 2;
                     }
