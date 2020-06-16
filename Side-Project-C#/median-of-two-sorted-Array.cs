@@ -33,7 +33,7 @@ namespace Sorting_Algorithm
                     // if it's even
                     if ((lengthA + lengthB) % 2 == 0)
                     {
-                        return ((double)Math.Max(maxLeftA, maxLeftB) + Math.Max(minRightA, minRightB)) / 2;
+                        return ((double)Math.Max(maxLeftA, maxLeftB) + Math.Min(minRightA, minRightB)) / 2;
                     }
                     else // if is old
                     {
