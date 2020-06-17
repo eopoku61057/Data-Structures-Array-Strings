@@ -21,7 +21,7 @@ namespace DataStructure
             // Ensure that s is shorter than t
             if (ns > nt)
             {
-                return false;
+                return isOneEditDistance(t, s);
             }
 
             // The strings are not one edit away distance if the length diff is more than 1
