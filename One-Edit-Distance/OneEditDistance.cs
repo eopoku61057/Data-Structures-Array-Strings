@@ -19,7 +19,7 @@ namespace DataStructure
             int nt = s.Length;
 
             // Ensure that s is shorter than t
-            if (nt > ns)
+            if (ns > nt)
             {
                 return false;
             }
