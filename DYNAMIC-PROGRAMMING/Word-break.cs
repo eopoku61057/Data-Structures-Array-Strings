@@ -17,7 +17,7 @@ namespace DataStructure
     {
         public bool WordBreak(string s, IList<string> wordDict)
         {
-            HashSet<string> set = new HashSet<string>();
+            IList<string> set = new List<string>(wordDict);
             bool[] dp = new bool[s.Length + 1];
             dp[0] = true;
             for (int i = 1; i <= s.Length; i++)
