@@ -18,27 +18,27 @@ namespace DataStructure
         
             Space Complexity: 0(N!) since one has to keep N! solutions
          */
-        public IList<IList<int>> Permute(int[] nums)
-        {
-            IList<IList<int>> output = new List<IList<int>>();
+         public IList<IList<int>> Permute(int[] nums) {
+           IList<IList<int>> output = new List<IList<int>>();
 
             // convert nums into list since the output is a list of lists
-            List<int> nums_lst = new List<int>();
-            foreach (var num in nums)
-            {
-                nums_lst.Add(num);
-            }
+            
 
             int n = nums.Length;
-            BackTrack(n, nums_lst, output, 0, nums);
+            BackTrack(n, nums, output, 0);
             return output;
-        }
-
-        private void BackTrack(int n, List<int> nums_lst, IList<IList<int>> output, int first, int[] nums)
+    }
+    
+        private void BackTrack(int n, int[] nums, IList<IList<int>> output, int first)
         {
             // if all intergers are used up
             if (first == n)
             {
+                List<int> nums_lst = new List<int>();
+                foreach (var num in nums)
+                {
+                    nums_lst.Add(num);
+                }
                 output.Add(new List<int>(nums_lst));
             }
 
@@ -48,7 +48,7 @@ namespace DataStructure
                 Swap(nums, first, i);
 
                 //use next integers to complete the permutations
-                BackTrack(n, nums_lst, output, first + i, nums);
+                BackTrack(n, nums, output, first + 1);
                 // backtrack
                 Swap(nums, first, i);
             }
