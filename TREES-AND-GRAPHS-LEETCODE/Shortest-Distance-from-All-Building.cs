@@ -54,8 +54,8 @@ namespace DataStructure
             queue.Enqueue((row, col));
             visited[row, col] = true;
             int curDistance = 0;
-
-            while(queue.Any())
+            Queue<Pos> queue = new LinkedList<>();
+            while (queue.Any())
             {
                 curDistance++;
                 int size = queue.Count;
