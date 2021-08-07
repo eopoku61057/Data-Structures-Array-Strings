@@ -40,10 +40,8 @@ namespace DataStructure
                 string digit = next_digits.Substring(0, 1);
                 string letters = phone.GetValueOrDefault(digit);
 
-                for (int i = 0; i < letters.Length; i++)
+                foreach (char letter in letters)
                 {
-                    string letter = phone.GetValueOrDefault(digit).Substring(i, i + 1);
-
                     //append the current letter to the combination and proceed to the next digits
                     BackTrack(combination + letter, next_digits.Substring(1));
                 }
