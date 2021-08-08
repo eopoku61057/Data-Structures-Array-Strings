@@ -11,54 +11,39 @@ namespace DataStructure
 {
     public class SortedZeros
     {
-        public IList<IList<int>> output = new List<IList<int>>();
-        public IList<IList<int>> findPermutations(int[] str, int index, int n)
+        public static IList<IList<int>> output = new List<IList<int>>();
+        public static List<int> set = new List<int>();
+        public IList<IList<int>> PermuteUnique(int[] nums)
         {
-            if (index >= n)
-            {
-                List<int> ins = new List<int>();
-                foreach (var i in str)
-                {
-                    ins.Add(i);
-                    Console.Write(i + " ||  ");
-                }
-                output.Add(ins);
-                return output;
-            }
+            if (nums.Length == 0) return output;
 
-            for (int i = index; i < n; i++)
-            {
-                // Proceed further for str[i} only if it doesn't match with any of the characters after str[index]
-                bool check = ShouldSawp(str, index, i);
-                if (check)
-                {
-                    Swap(str, index, i);
-                    IList<IList<int>> data = findPermutations(str, index + 1, n);
-                    Swap(str, index, i);
-                }
-            }
-
+            bool[] used = new bool[nums.Length];
+            BackTrack(nums, used);
             return output;
         }
-
-        private void Swap(int[] str, int index, int i)
+        private static void BackTrack(int[] nums, bool[] used)
         {
-            int c = str[index];
-            str[index] = str[i];
-            str[i] = c;
-        }
-
-        // Returns true if str[curr] does not matches with any of the characters after str[index]
-        private bool ShouldSawp(int[] str, int index, int current)
-        {
-            for (int i = index; i < current; i++ )
+            if(set.Count == nums.Length)
             {
-                if(str[i] == str[current])
+                output.Add(new List<int>(set));
+                return;
+            }
+
+            for(int i = 0; i < nums.Length; i++)
+            {
+                if (used[i]) continue;
+
+                // if we've not use index and index greater than zero and previous index is not equal to 
+                // index and previous index was used
+                if((!used[i]) && !(i > 0 && nums[i] == nums[i - 1] && !used[i - 1]))
                 {
-                    return false;
+                    set.Add(nums[i]);
+                    used[i] = true;
+                    BackTrack(nums, used);
+                    set.Remove(nums[i]);
+                    used[i] = false;
                 }
             }
-            return true;
         }
     }
 }
