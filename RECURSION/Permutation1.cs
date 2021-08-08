@@ -1,64 +1,54 @@
-/*
-    Given a collection of distinct integers, return all possible permutations.
- */
-
- using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DataStructure
+namespace ConsoleApp1
 {
-    public class SortedZeros
+    class Program
     {
-        /* Time complexity : \mathcal{O}(\sum_{k = 1}^{N}{P(N, k)})O(∑ 
-        k=1N
-​	
-        P(N, k)) where P(N, k) = \frac{N!}{(N - k)!} = N(N - 1) ... (N - k + 1)P(N, k)= (N−k)!N!=N(N−1)...(N−k+1)
+        /* Time complexity : o(n!)
         
             Space Complexity: 0(N!) since one has to keep N! solutions
          */
-         public IList<IList<int>> Permute(int[] nums) {
-           IList<IList<int>> output = new List<IList<int>>();
-
-            // convert nums into list since the output is a list of lists
-            
-
-            int n = nums.Length;
-            BackTrack(n, nums, output, 0);
-            return output;
-    }
-    
-        private void BackTrack(int n, int[] nums, IList<IList<int>> output, int first)
+        public static IList<IList<int>> output = new List<IList<int>>();
+        public static List<int> set = new List<int>();
+        static void Main(string[] args)
         {
-            // if all intergers are used up
-            if (first == n)
-            {
-                List<int> nums_lst = new List<int>();
-                foreach (var num in nums)
-                {
-                    nums_lst.Add(num);
-                }
-                output.Add(new List<int>(nums_lst));
-            }
+            int[] nums = { 1, 2, 3 };
+            IList<IList<int>> data = Permutate(nums);
 
-            for (int i = first; i < n; i++)
-            {
-                // place i-th integer first in the current permutation
-                Swap(nums, first, i);
-
-                //use next integers to complete the permutations
-                BackTrack(n, nums, output, first + 1);
-                // backtrack
-                Swap(nums, first, i);
-            }
         }
 
-        private void Swap(int[] nums, int first, int i)
+        private static IList<IList<int>> Permutate(int[] nums)
         {
-            int tmp = nums[first];
-            nums[first] = nums[i];
-            nums[i] = tmp;
+            if (nums.Length == 0) return output;
+            bool[] used = new bool[nums.Length];
+            BackTrack(nums, used);
+            return output;
+        }
+
+        private static void BackTrack(int[] nums, bool[] used)
+        {
+            if (set.Count == nums.Length)
+            {
+                output.Add(new List<int>(set));
+                return;
+            }
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (used[i])
+                    continue;
+
+                set.Add(nums[i]);
+                used[i] = true;
+                BackTrack(nums, used);
+                set.Remove(nums[i]);
+                used[i] = false;
+            }
         }
     }
 }
+
+
