@@ -29,4 +29,16 @@ namespace DataStructure
         }
     }
 
+    import java.util.regex.*;
+    class Solution
+    {
+        public boolean isMatch(String s, String reg)
+        {
+            Pattern p = Pattern.compile(reg);
+            Matcher m = p.matcher(s);
+            if (m.find() && m.group().equals(s)) return true;
+            return false;
+        }
+    }
+
 }

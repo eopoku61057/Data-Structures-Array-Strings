@@ -53,7 +53,7 @@ namespace ConsoleApp1
 
             for (int i = start; i <= s.Length - 1; i++)
             {
-                if (i != start && s[i] == s[i + 1])
+                if (i != start && s[i] == s[i - 1])
                     continue;
                 if (s[i] == '(' || s[i] == ')')
                 {
